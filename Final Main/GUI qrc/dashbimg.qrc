@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>average.png</file>
+    <file>past.png</file>
+    <file>invoice.png</file>
+    <file>info.png</file>
+    <file>arrow.png</file>
+    <file>help.png</file>
+    <file>printer.png</file>
+    <file>dashboard.png</file>
+  </qresource>
+</RCC>
