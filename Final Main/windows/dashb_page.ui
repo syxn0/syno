@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>884</width>
-    <height>592</height>
+    <width>1072</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -18,14 +18,14 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>884</width>
-    <height>592</height>
+    <width>1080</width>
+    <height>720</height>
    </size>
   </property>
   <property name="baseSize">
    <size>
-    <width>884</width>
-    <height>591</height>
+    <width>1080</width>
+    <height>720</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,7 @@
       <x>0</x>
       <y>-10</y>
       <width>151</width>
-      <height>611</height>
+      <height>751</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -57,8 +57,8 @@
      <property name="geometry">
       <rect>
        <x>-10</x>
-       <y>250</y>
-       <width>181</width>
+       <y>230</y>
+       <width>191</width>
        <height>31</height>
       </rect>
      </property>
@@ -122,9 +122,9 @@
         <colorrole role="PlaceholderText">
          <brush brushstyle="NoBrush">
           <color alpha="128">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>205</red>
+           <green>230</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -252,9 +252,9 @@
         <colorrole role="PlaceholderText">
          <brush brushstyle="NoBrush">
           <color alpha="128">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>205</red>
+           <green>230</green>
+           <blue>255</blue>
           </color>
          </brush>
         </colorrole>
@@ -571,7 +571,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>-30</x>
-       <y>310</y>
+       <y>330</y>
        <width>191</width>
        <height>31</height>
       </rect>
@@ -1329,8 +1329,8 @@ QPushButton:pressed {
      <rect>
       <x>150</x>
       <y>0</y>
-      <width>731</width>
-      <height>601</height>
+      <width>931</width>
+      <height>731</height>
      </rect>
     </property>
     <property name="palette">
@@ -1425,7 +1425,7 @@ QPushButton:pressed {
      </palette>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: rgb(240, 240, 240);</string>
+     <string notr="true"/>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -1438,7 +1438,7 @@ QPushButton:pressed {
       <rect>
        <x>30</x>
        <y>60</y>
-       <width>191</width>
+       <width>271</width>
        <height>101</height>
       </rect>
      </property>
@@ -1472,9 +1472,9 @@ QPushButton:pressed {
     <widget class="QFrame" name="pastbill">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>320</x>
        <y>60</y>
-       <width>201</width>
+       <width>271</width>
        <height>101</height>
       </rect>
      </property>
@@ -1510,7 +1510,7 @@ QPushButton:pressed {
       <rect>
        <x>30</x>
        <y>10</y>
-       <width>171</width>
+       <width>231</width>
        <height>51</height>
       </rect>
      </property>
@@ -1526,9 +1526,9 @@ QPushButton:pressed {
     <widget class="QFrame" name="averagebill">
      <property name="geometry">
       <rect>
-       <x>500</x>
+       <x>610</x>
        <y>60</y>
-       <width>201</width>
+       <width>271</width>
        <height>101</height>
       </rect>
      </property>
@@ -1563,9 +1563,9 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>180</y>
-       <width>431</width>
-       <height>201</height>
+       <y>190</y>
+       <width>561</width>
+       <height>361</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -1599,10 +1599,10 @@ QPushButton:pressed {
     <widget class="QFrame" name="history">
      <property name="geometry">
       <rect>
-       <x>500</x>
-       <y>180</y>
-       <width>201</width>
-       <height>371</height>
+       <x>610</x>
+       <y>190</y>
+       <width>271</width>
+       <height>361</height>
       </rect>
      </property>
      <property name="styleSheet">

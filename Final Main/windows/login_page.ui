@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>770</width>
+    <width>810</width>
     <height>560</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -24,13 +24,13 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>770</width>
+    <width>810</width>
     <height>560</height>
    </size>
   </property>
   <property name="baseSize">
    <size>
-    <width>770</width>
+    <width>810</width>
     <height>560</height>
    </size>
   </property>
@@ -61,7 +61,7 @@
      <rect>
       <x>420</x>
       <y>80</y>
-      <width>321</width>
+      <width>351</width>
       <height>401</height>
      </rect>
     </property>
@@ -84,7 +84,7 @@ border:5px solid black ;
     <widget class="QLineEdit" name="User">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>60</x>
        <y>140</y>
        <width>231</width>
        <height>41</height>
@@ -159,9 +159,9 @@ border:5px solid black ;
         <colorrole role="PlaceholderText">
          <brush brushstyle="SolidPattern">
           <color alpha="128">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>129</red>
+           <green>129</green>
+           <blue>129</blue>
           </color>
          </brush>
         </colorrole>
@@ -233,9 +233,9 @@ border:5px solid black ;
         <colorrole role="PlaceholderText">
          <brush brushstyle="SolidPattern">
           <color alpha="128">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>129</red>
+           <green>129</green>
+           <blue>129</blue>
           </color>
          </brush>
         </colorrole>
@@ -307,9 +307,9 @@ border:5px solid black ;
         <colorrole role="PlaceholderText">
          <brush brushstyle="SolidPattern">
           <color alpha="128">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>129</red>
+           <green>129</green>
+           <blue>129</blue>
           </color>
          </brush>
         </colorrole>
@@ -338,8 +338,8 @@ color: rgb(124, 124, 124);</string>
     <widget class="QLabel" name="pic">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>20</y>
+       <x>90</x>
+       <y>10</y>
        <width>171</width>
        <height>71</height>
       </rect>
@@ -356,16 +356,22 @@ background:none;</string>
     <widget class="QLabel" name="Welcome">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>60</x>
        <y>90</y>
-       <width>221</width>
+       <width>251</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>800</width>
+       <height>520</height>
+      </size>
      </property>
      <property name="font">
       <font>
        <family>OCR A Extended</family>
-       <pointsize>20</pointsize>
+       <pointsize>18</pointsize>
        <underline>true</underline>
        <strikeout>false</strikeout>
       </font>
@@ -380,7 +386,7 @@ background:none;</string>
     <widget class="QLineEdit" name="password">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>60</x>
        <y>190</y>
        <width>231</width>
        <height>41</height>
@@ -455,9 +461,9 @@ background:none;</string>
         <colorrole role="PlaceholderText">
          <brush brushstyle="SolidPattern">
           <color alpha="128">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>129</red>
+           <green>129</green>
+           <blue>129</blue>
           </color>
          </brush>
         </colorrole>
@@ -529,9 +535,9 @@ background:none;</string>
         <colorrole role="PlaceholderText">
          <brush brushstyle="SolidPattern">
           <color alpha="128">
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
+           <red>129</red>
+           <green>129</green>
+           <blue>129</blue>
           </color>
          </brush>
         </colorrole>
@@ -603,9 +609,9 @@ background:none;</string>
         <colorrole role="PlaceholderText">
          <brush brushstyle="SolidPattern">
           <color alpha="128">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
+           <red>129</red>
+           <green>129</green>
+           <blue>129</blue>
           </color>
          </brush>
         </colorrole>
@@ -635,7 +641,7 @@ color: rgb(124, 124, 124);</string>
     <widget class="QPushButton" name="logout">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>180</x>
        <y>250</y>
        <width>111</width>
        <height>41</height>
@@ -915,9 +921,9 @@ QPushButton:pressed {
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>60</x>
        <y>230</y>
-       <width>91</width>
+       <width>111</width>
        <height>23</height>
       </rect>
      </property>
@@ -949,9 +955,9 @@ QPushButton:hover {
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>60</x>
        <y>340</y>
-       <width>101</width>
+       <width>121</width>
        <height>23</height>
       </rect>
      </property>
