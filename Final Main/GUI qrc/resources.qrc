@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="resources">
+    <file>energy-coffeepower.gif</file>
+    <file>account.png</file>
+    <file>arrow (1).png</file>
+    <file>arrow.png</file>
+    <file>average.png</file>
+    <file>dashboard.png</file>
+    <file>help.png</file>
+    <file>info.png</file>
+    <file>invoice.png</file>
+    <file>past.png</file>
+    <file>printer.png</file>
+  </qresource>
+</RCC>

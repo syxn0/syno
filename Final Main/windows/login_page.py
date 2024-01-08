@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'login_page.ui'
+# Form implementation generated from reading ui file 'C:\Users\User\syno\Final Main\windows\login2.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -14,367 +14,189 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(770, 560)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
-        MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(770, 560))
-        MainWindow.setMaximumSize(QtCore.QSize(770, 560))
-        MainWindow.setBaseSize(QtCore.QSize(770, 560))
-        MainWindow.setStatusTip("")
-        MainWindow.setAutoFillBackground(False)
-        MainWindow.setStyleSheet("background-image: url(:/img/Untitled.png);")
-        MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
-        MainWindow.setAnimated(True)
-        MainWindow.setDocumentMode(False)
+        MainWindow.resize(720, 550)
+        MainWindow.setMinimumSize(QtCore.QSize(720, 550))
+        MainWindow.setMaximumSize(QtCore.QSize(1080, 720))
+        MainWindow.setBaseSize(QtCore.QSize(720, 550))
+        MainWindow.setStyleSheet("*{\n"
+"    background: rgb(225, 225, 225);\n"
+"}\n"
+"#frame {\n"
+"    width: 300px;\n"
+"    background-color:rgb(203, 143, 75,0.77);\n"
+"    border-bottom-right-radius: 35px;\n"
+"    border-top-right-radius:35px;\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.login_widget = QtWidgets.QWidget(self.centralwidget)
-        self.login_widget.setGeometry(QtCore.QRect(420, 80, 321, 401))
-        font = QtGui.QFont()
-        font.setKerning(True)
-        self.login_widget.setFont(font)
-        self.login_widget.setAutoFillBackground(False)
-        self.login_widget.setStyleSheet("\n"
-"alternate-background-color: rgb(255, 85, 0);\n"
-"border-radius:50px;\n"
-"\n"
-"border:5px solid black ;\n"
-"")
-        self.login_widget.setObjectName("login_widget")
-        self.User = QtWidgets.QLineEdit(self.login_widget)
-        self.User.setGeometry(QtCore.QRect(40, 140, 231, 41))
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.PlaceholderText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        self.User.setPalette(palette)
-        self.User.setStyleSheet("background:none;\n"
-"border: none;\n"
-"border-bottom:3px solid rgba(0,0,0,200);\n"
-"color: rgb(124, 124, 124);")
-        self.User.setText("")
-        self.User.setMaxLength(25)
-        self.User.setAlignment(QtCore.Qt.AlignCenter)
-        self.User.setObjectName("User")
-        self.pic = QtWidgets.QLabel(self.login_widget)
-        self.pic.setGeometry(QtCore.QRect(70, 20, 171, 71))
-        self.pic.setStyleSheet("image: url(:/login/account.png);\n"
-"border:none;\n"
-"background:none;")
-        self.pic.setText("")
-        self.pic.setObjectName("pic")
-        self.Welcome = QtWidgets.QLabel(self.login_widget)
-        self.Welcome.setGeometry(QtCore.QRect(50, 90, 221, 51))
-        font = QtGui.QFont()
-        font.setFamily("OCR A Extended")
-        font.setPointSize(20)
-        font.setUnderline(True)
-        font.setStrikeOut(False)
-        self.Welcome.setFont(font)
-        self.Welcome.setStyleSheet("border:none;")
-        self.Welcome.setObjectName("Welcome")
-        self.password = QtWidgets.QLineEdit(self.login_widget)
-        self.password.setGeometry(QtCore.QRect(40, 190, 231, 41))
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.PlaceholderText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(124, 124, 124))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        self.password.setPalette(palette)
-        self.password.setStyleSheet("background-color: none;\n"
-"border: none;\n"
-"background-color: none;\n"
-"border-bottom:3px solid rgba(0,0,0,200);\n"
-"color: rgb(124, 124, 124);")
-        self.password.setMaxLength(25)
-        self.password.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.password.setAlignment(QtCore.Qt.AlignCenter)
-        self.password.setObjectName("password")
-        self.logout = QtWidgets.QPushButton(self.login_widget)
-        self.logout.setGeometry(QtCore.QRect(160, 250, 111, 41))
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255, 128))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255, 128))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        palette.setBrush(QtGui.QPalette.Inactive, QtGui.QPalette.PlaceholderText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.WindowText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Button, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Text, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.ButtonText, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Base, brush)
-        brush = QtGui.QBrush(QtGui.QColor(65, 68, 75))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 85, 0))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.AlternateBase, brush)
-        brush = QtGui.QBrush(QtGui.QColor(205, 230, 255, 128))
-        brush.setStyle(QtCore.Qt.NoBrush)
-        palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
-        self.logout.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(9)
-        self.logout.setFont(font)
-        self.logout.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.logout.setStyleSheet("QPushButton {\n"
-"    background-color:rgb(65, 68, 75);\n"
-"    border-radius: 10px;\n"
-"    color:rgb(205,230,255);\n"
-"    border:none;\n"
-"    \n"
-"}\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(178, 178, 178);\n"
-"\n"
-"}\n"
-"QPushButton:pressed {\n"
-"     text-decoration: none;\n"
-"      display: inline-block;\n"
-"      font-size: 10px;\n"
-"      margin: 4px 2px;\n"
-"     cursor: pointer;\n"
-"}")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/login/arrow (1).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.logout.setIcon(icon)
-        self.logout.setIconSize(QtCore.QSize(20, 24))
-        self.logout.setCheckable(False)
-        self.logout.setObjectName("logout")
-        self.pushButton = QtWidgets.QPushButton(self.login_widget)
-        self.pushButton.setGeometry(QtCore.QRect(40, 230, 91, 23))
-        font = QtGui.QFont()
-        font.setUnderline(True)
-        self.pushButton.setFont(font)
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"    border:none;\n"
-"    background:none;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    color: rgb(0, 170, 255);\n"
-"}")
-        self.pushButton.setFlat(True)
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.login_widget)
-        self.pushButton_2.setGeometry(QtCore.QRect(40, 340, 101, 23))
-        font = QtGui.QFont()
-        font.setUnderline(True)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet("QPushButton {\n"
-"    border:none;\n"
-"    background:none;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    color: rgb(0, 170, 255);\n"
-"}")
-        self.pushButton_2.setFlat(True)
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(-10, -10, 391, 581))
-        self.frame.setStyleSheet("background:rgb(119, 204, 183);\n"
-"border-radius:20px;")
+        self.frame.setStyleSheet("")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.frame.raise_()
-        self.login_widget.raise_()
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.frame_5 = QtWidgets.QFrame(self.frame)
+        self.frame_5.setStyleSheet("background:none;")
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.frame_5)
+        self.verticalLayout_9.setObjectName("verticalLayout_9")
+        self.frame_4 = QtWidgets.QFrame(self.frame_5)
+        self.frame_4.setStyleSheet("image: url(:/resources/energy-coffeepower.gif);")
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.verticalLayout_9.addWidget(self.frame_4)
+        self.label = QtWidgets.QLabel(self.frame_5)
+        font = QtGui.QFont()
+        font.setFamily("Ravie")
+        font.setPointSize(26)
+        self.label.setFont(font)
+        self.label.setToolTipDuration(0)
+        self.label.setObjectName("label")
+        self.verticalLayout_9.addWidget(self.label, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.gridLayout_2.addWidget(self.frame_5, 0, 0, 1, 1)
+        self.horizontalLayout.addWidget(self.frame)
+        self.frame2 = QtWidgets.QFrame(self.centralwidget)
+        self.frame2.setStyleSheet("#user,#password{\n"
+"    border:1px solid black;\n"
+"    border-radius:5px;\n"
+"    margin-left: 25px;\n"
+"    margin-right:25px;\n"
+"    margin-top: 10px;\n"
+"    \n"
+"}\n"
+"\n"
+"#login{    \n"
+"    margin-top:8px;\n"
+"    margin-bottom:4px;\n"
+"    padding:2px;\n"
+"    border:1px solid black;\n"
+"    border-radius:13px;\n"
+"    background-color:rgb(203, 143, 75,0.9);\n"
+"    color:black;\n"
+"    \n"
+"}\n"
+"\n"
+"#login:hover{\n"
+"    background-color:rgb(203, 143, 75,0.5);\n"
+"}\n"
+"#login:pressed{\n"
+"    margin-top:8px;\n"
+"    margin-bottom:4px;\n"
+"    padding:2px;\n"
+"    background-color:rgb(203, 143, 75,0.1);\n"
+"}\n"
+"\n"
+"#forgot{\n"
+"    border:none;\n"
+"}\n"
+"#forgot:hover{\n"
+"    color:rgb(0,170,255,0.7);\n"
+"}\n"
+"#create{\n"
+"    border:none;\n"
+"}\n"
+"#create:hover{\n"
+"    color:rgb(0,170,255,0.7);\n"
+"}\n"
+"\n"
+"#frame_2{\n"
+"    border: 2px solid black;\n"
+"    border-radius: 25px;\n"
+"    padding:10px;\n"
+"}\n"
+"#frame_3{\n"
+"    background:none;\n"
+"}")
+        self.frame2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame2.setObjectName("frame2")
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.frame2)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.frame_2 = QtWidgets.QFrame(self.frame2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
+        self.frame_2.setSizePolicy(sizePolicy)
+        self.frame_2.setMinimumSize(QtCore.QSize(270, 270))
+        self.frame_2.setMaximumSize(QtCore.QSize(617, 16777215))
+        self.frame_2.setBaseSize(QtCore.QSize(204, 500))
+        self.frame_2.setStyleSheet("")
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.frame_2)
+        self.verticalLayout_7.setContentsMargins(0, 0, -1, 0)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        self.hello = QtWidgets.QLabel(self.frame_2)
+        self.hello.setMinimumSize(QtCore.QSize(50, 21))
+        font = QtGui.QFont()
+        font.setFamily("MS PGothic")
+        font.setPointSize(17)
+        font.setUnderline(False)
+        self.hello.setFont(font)
+        self.hello.setObjectName("hello")
+        self.verticalLayout_7.addWidget(self.hello, 0, QtCore.Qt.AlignHCenter)
+        self.user = QtWidgets.QLineEdit(self.frame_2)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.user.setFont(font)
+        self.user.setStyleSheet("")
+        self.user.setObjectName("user")
+        self.verticalLayout_7.addWidget(self.user)
+        self.password = QtWidgets.QLineEdit(self.frame_2)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        self.password.setFont(font)
+        self.password.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.password.setObjectName("password")
+        self.verticalLayout_7.addWidget(self.password)
+        self.frame_3 = QtWidgets.QFrame(self.frame_2)
+        self.frame_3.setMinimumSize(QtCore.QSize(0, 100))
+        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.login = QtWidgets.QPushButton(self.frame_3)
+        self.login.setGeometry(QtCore.QRect(28, 0, 81, 42))
+        self.login.setMinimumSize(QtCore.QSize(50, 12))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.login.setFont(font)
+        self.login.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.login.setIconSize(QtCore.QSize(23, 19))
+        self.login.setObjectName("login")
+        self.forgot = QtWidgets.QPushButton(self.frame_3)
+        self.forgot.setGeometry(QtCore.QRect(120, -10, 91, 41))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        font.setUnderline(True)
+        self.forgot.setFont(font)
+        self.forgot.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.forgot.setStyleSheet("background:none;")
+        self.forgot.setObjectName("forgot")
+        self.verticalLayout_7.addWidget(self.frame_3, 0, QtCore.Qt.AlignVCenter)
+        self.create = QtWidgets.QPushButton(self.frame_2)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setUnderline(True)
+        font.setWeight(75)
+        self.create.setFont(font)
+        self.create.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.create.setObjectName("create")
+        self.verticalLayout_7.addWidget(self.create)
+        self.verticalLayout_8.addWidget(self.frame_2, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
+        self.horizontalLayout.addWidget(self.frame2)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -382,15 +204,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Electrify"))
-        self.User.setPlaceholderText(_translate("MainWindow", "Username"))
-        self.Welcome.setText(_translate("MainWindow", "Welcome back!"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.label.setText(_translate("MainWindow", "Coffee Energy"))
+        self.hello.setText(_translate("MainWindow", "User Login"))
+        self.user.setPlaceholderText(_translate("MainWindow", "Username"))
         self.password.setPlaceholderText(_translate("MainWindow", "Password"))
-        self.logout.setText(_translate("MainWindow", "Login"))
-        self.pushButton.setText(_translate("MainWindow", "Forgot password?"))
-        self.pushButton_2.setText(_translate("MainWindow", "Create an account."))
+        self.login.setText(_translate("MainWindow", "Login"))
+        self.forgot.setText(_translate("MainWindow", "Forgot password?"))
+        self.create.setText(_translate("MainWindow", "Create account"))
+import resources_rc
 
-import windows.elebill_rc
 
 if __name__ == "__main__":
     import sys
@@ -400,4 +223,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

@@ -29,9 +29,10 @@ class MainWindow(QMainWindow):
             self.ui = Dashboard()
         self.ui.setupUi(self)
     
-    def on_click(self):
+    def on_logout_clicked(self):
+        if self.user
         self.show_message("ERROR", "Incorrect login credentials!", QMessageBox.Warning)
-
+ 
 
 if(__name__ == "__main__"):
     app = QApplication(sys.argv)
