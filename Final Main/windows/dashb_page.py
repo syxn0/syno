@@ -618,7 +618,7 @@ class Ui_MainWindow(object):
         self.dashb.setText(_translate("MainWindow", "Home/Dashboard"))
         self.label_4.setText(_translate("MainWindow", "Chart Here"))
         self.history_2.setText(_translate("MainWindow", "Billing History here"))
-import dashbimg_rc
+import windows.dashbimg_rc
 
 
 if __name__ == "__main__":

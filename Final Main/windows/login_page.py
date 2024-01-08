@@ -389,9 +389,8 @@ class Ui_MainWindow(object):
         self.logout.setText(_translate("MainWindow", "Login"))
         self.pushButton.setText(_translate("MainWindow", "Forgot password?"))
         self.pushButton_2.setText(_translate("MainWindow", "Create an account."))
-import dashbimg_rc
-import elebill_rc
 
+import windows.elebill_rc
 
 if __name__ == "__main__":
     import sys
@@ -401,3 +400,4 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
