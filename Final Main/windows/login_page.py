@@ -212,7 +212,7 @@ class Ui_MainWindow(object):
         self.login.setText(_translate("MainWindow", "Login"))
         self.forgot.setText(_translate("MainWindow", "Forgot password?"))
         self.create.setText(_translate("MainWindow", "Create account"))
-import resources_rc
+import windows.resources_rc
 
 
 if __name__ == "__main__":
