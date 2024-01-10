@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="resources">
+    <file>search-interface-symbol.png</file>
+    <file>horizontal-bars.png</file>
     <file>energy-coffeepower.gif</file>
     <file>account.png</file>
     <file>arrow (1).png</file>

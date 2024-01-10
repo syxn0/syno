@@ -1,8 +1,10 @@
 import sys, sqlite3
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
+from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
-from windows.dashb_page import Ui_MainWindow as Dashboard
+#from windows.dashboard2_page import Ui_MainWindow as Dashboard
+from sidebar import Ui_MainWindow as Dashboard
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -18,6 +20,10 @@ class MainWindow(QMainWindow):
             1 : 'User is logged'
         }
         self.session()
+    
+    def sidebar(self,Sidebar):
+        Sidebar()
+
 
     def __userExists(self, username, password):
         self.sql.execute("SELECT * FROM users WHERE username = ? AND password = ?;",(username, password))
@@ -50,7 +56,34 @@ class MainWindow(QMainWindow):
             self.session()
         else:
             self.show_message("ERROR", "Incorrect login credentials!", QMessageBox.Warning)
- 
+
+
+    def on_stackedWidget_currentChanged(self, index):
+        btn_list = self.ui.sidebar_menu.findChildren(QPushButton) \
+                    + self.ui.sidebar_menu2.findChildren(QPushButton)
+
+        for btn in btn_list:
+            if index in [1,2,3,4]:
+                btn.setAutoExclusive(False)
+                btn.setChecked(False)
+            else:
+                btn.setAutoExclusive(True)    
+
+    def on_dashboard_button_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(1)
+
+    def on_print_button_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(2) 
+
+    def on_help_button_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(3) 
+
+    def on_aboutus_button_toggled(self):
+        self.ui.stackedWidget.setCurrentIndex(4)  
+    
+
+
+
 
 if(__name__ == "__main__"):
     app = QApplication(sys.argv)
