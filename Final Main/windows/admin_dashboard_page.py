@@ -17,16 +17,16 @@ class Ui_MainWindow(object):
         MainWindow.resize(1080, 720)
         MainWindow.setMinimumSize(QtCore.QSize(1080, 720))
         MainWindow.setMaximumSize(QtCore.QSize(1080, 720))
-        MainWindow.setStyleSheet("background: rgb(225, 225, 225);")
+        MainWindow.setStyleSheet("background:none;")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setStyleSheet("background: rgb(225, 225, 225);")
+        self.centralwidget.setStyleSheet("background:rgb(203,143,75,0.77);")
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame_2 = QtWidgets.QFrame(self.centralwidget)
         self.frame_2.setMinimumSize(QtCore.QSize(0, 50))
         self.frame_2.setMaximumSize(QtCore.QSize(16777215, 46))
-        self.frame_2.setStyleSheet("background: rgb(208, 162, 110);\n"
+        self.frame_2.setStyleSheet("background:rgb(99, 99, 99);\n"
 "border-top-right-radius:20px;\n"
 "border-top-left-radius:20px;")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -45,8 +45,7 @@ class Ui_MainWindow(object):
         font.setBold(False)
         font.setWeight(50)
         self.label.setFont(font)
-        self.label.setStyleSheet("background: rgb(208, 162, 110);\n"
-"")
+        self.label.setStyleSheet("color:white;")
         self.label.setText("")
         self.label.setTextFormat(QtCore.Qt.MarkdownText)
         self.label.setPixmap(QtGui.QPixmap(":/resources/account.png"))
@@ -60,8 +59,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.label_5.setFont(font)
-        self.label_5.setStyleSheet("color:white;\n"
-"background: rgb(208, 162, 110);")
+        self.label_5.setStyleSheet("color:white;")
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_4.addWidget(self.label_5)
         self.verticalLayout.addWidget(self.frame_2)
@@ -80,7 +78,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.frame_3.setFont(font)
-        self.frame_3.setStyleSheet("background: rgb(208, 162, 110);")
+        self.frame_3.setStyleSheet("background:rgb(99, 99, 99);")
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
@@ -88,7 +86,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_5 = QtWidgets.QFrame(self.frame_3)
         self.frame_5.setMinimumSize(QtCore.QSize(13, 0))
-        self.frame_5.setStyleSheet("background: rgb(208, 162, 110);")
+        self.frame_5.setStyleSheet("")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
@@ -96,15 +94,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.tableWidget = QtWidgets.QTableWidget(self.frame_5)
         self.tableWidget.setMaximumSize(QtCore.QSize(111111, 16777215))
-        self.tableWidget.setAutoFillBackground(False)
-        self.tableWidget.setStyleSheet("background:rgb(225, 225, 225);\n"
-"border-radius: 30px;")
-        self.tableWidget.setLineWidth(1)
-        self.tableWidget.setMidLineWidth(0)
+        self.tableWidget.setStyleSheet("background:rgb(255,255,255);")
         self.tableWidget.setAutoScrollMargin(17)
-        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-        self.tableWidget.setAlternatingRowColors(True)
-        self.tableWidget.setIconSize(QtCore.QSize(0, 0))
         self.tableWidget.setGridStyle(QtCore.Qt.SolidLine)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(10)
@@ -144,7 +135,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_6 = QtWidgets.QFrame(self.frame_7)
         self.frame_6.setMinimumSize(QtCore.QSize(221, 0))
-        self.frame_6.setStyleSheet("background:rgb(225, 225, 225);\n"
+        self.frame_6.setStyleSheet("background:rgb(205, 148, 84);\n"
 "border-radius: 30px;")
         self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -159,16 +150,14 @@ class Ui_MainWindow(object):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.fullname = QtWidgets.QLineEdit(self.frame_6)
+        self.lineEdit = QtWidgets.QLineEdit(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(15)
-        self.fullname.setFont(font)
-        self.fullname.setStyleSheet("border:1px solid black;\n"
+        self.lineEdit.setFont(font)
+        self.lineEdit.setStyleSheet("border:1px solid black;\n"
 "border-radius: 10px;")
-        self.fullname.setText("")
-        self.fullname.setMaxLength(32)
-        self.fullname.setObjectName("fullname")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.fullname)
+        self.lineEdit.setObjectName("lineEdit")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
         self.label_3 = QtWidgets.QLabel(self.frame_6)
         self.label_3.setMinimumSize(QtCore.QSize(105, 22))
         self.label_3.setMaximumSize(QtCore.QSize(100, 16777215))
@@ -177,26 +166,23 @@ class Ui_MainWindow(object):
         self.label_3.setFont(font)
         self.label_3.setObjectName("label_3")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        self.user_name_input = QtWidgets.QLineEdit(self.frame_6)
+        self.lineEdit_2 = QtWidgets.QLineEdit(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(15)
-        self.user_name_input.setFont(font)
-        self.user_name_input.setStyleSheet("border:1px solid black;\n"
+        self.lineEdit_2.setFont(font)
+        self.lineEdit_2.setStyleSheet("border:1px solid black;\n"
 "border-radius: 10px;")
-        self.user_name_input.setMaxLength(32)
-        self.user_name_input.setObjectName("user_name_input")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.user_name_input)
-        self.new_password = QtWidgets.QLineEdit(self.frame_6)
+        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_2)
+        self.lineEdit_3 = QtWidgets.QLineEdit(self.frame_6)
         font = QtGui.QFont()
         font.setPointSize(15)
-        self.new_password.setFont(font)
-        self.new_password.setStyleSheet("border:1px solid black;\n"
+        self.lineEdit_3.setFont(font)
+        self.lineEdit_3.setStyleSheet("border:1px solid black;\n"
 "border-radius: 10px;")
-        self.new_password.setText("")
-        self.new_password.setMaxLength(32)
-        self.new_password.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.new_password.setObjectName("new_password")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.new_password)
+        self.lineEdit_3.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_3)
         self.label_4 = QtWidgets.QLabel(self.frame_6)
         self.label_4.setMinimumSize(QtCore.QSize(100, 22))
         self.label_4.setMaximumSize(QtCore.QSize(94, 16777215))
@@ -210,20 +196,8 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(15)
         self.add_btn.setFont(font)
-        self.add_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.add_btn.setStyleSheet("#add_btn{\n"
-"    border:1px solid black;\n"
-"    border-radius: 10px;\n"
-"    background:rgb(208, 162, 110);\n"
-"}\n"
-"#add_btn:hover{\n"
-"    background:rgb(208, 162, 110,0.7);\n"
-"}\n"
-"#add_btn:pressed{\n"
-"    background:rgb(208, 162, 110,0.1);\n"
-"    \n"
-"}\n"
-"")
+        self.add_btn.setStyleSheet("border:1px solid black;\n"
+"border-radius: 10px;")
         self.add_btn.setObjectName("add_btn")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.add_btn)
         self.horizontalLayout_3.addWidget(self.frame_6)
@@ -261,10 +235,10 @@ class Ui_MainWindow(object):
         item = self.tableWidget.horizontalHeaderItem(9)
         item.setText(_translate("MainWindow", "Actions"))
         self.label_2.setText(_translate("MainWindow", "Fullname :"))
-        self.fullname.setPlaceholderText(_translate("MainWindow", "Christine Dagcuta"))
+        self.lineEdit.setPlaceholderText(_translate("MainWindow", "Fullname"))
         self.label_3.setText(_translate("MainWindow", "Username :"))
-        self.user_name_input.setPlaceholderText(_translate("MainWindow", "christine143"))
-        self.new_password.setPlaceholderText(_translate("MainWindow", "New Password"))
+        self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Username"))
+        self.lineEdit_3.setPlaceholderText(_translate("MainWindow", "Password"))
         self.label_4.setText(_translate("MainWindow", "Password :"))
         self.add_btn.setText(_translate("MainWindow", "Add"))
 import resources_rc
