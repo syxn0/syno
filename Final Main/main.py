@@ -45,7 +45,6 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         if(self.session_type == 1 and self.session_user_type == 1):
             self.ui.sidebar_menu2.setHidden(True)
-            self.ui.pushButton.setText("Print Bill")
 
     def show_message(self, title, text, icon_type):
         msg = QMessageBox()
@@ -94,7 +93,7 @@ class MainWindow(QMainWindow):
     def on_logout_button_pressed(self):
         self.logout()
     
-    def on_print_button_pressed(self):
+    def on_print_bill_pressed(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
         filename = f'{fullname.replace(" ","_")}-Bills.txt'
         bill = open(filename, 'w')
@@ -127,11 +126,8 @@ class MainWindow(QMainWindow):
         self.ui.print_kwh.setText(kwh)
         self.ui.print_next_due.setText(next_due)
 
-    def on_help_button_toggled(self):
-        self.ui.header_widget.setCurrentIndex(2) 
-
     def on_aboutus_button_toggled(self):
-        self.ui.header_widget.setCurrentIndex(3)  
+        self.ui.header_widget.setCurrentIndex(2)  
         self.ui.label_7.setText("We love the earth! it is our planet!")
 
 
