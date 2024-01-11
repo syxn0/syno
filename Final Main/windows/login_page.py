@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'lugin_page.ui'
+# Form implementation generated from reading ui file 'C:\Users\User\syno\Final Main\windows\lugin_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -200,7 +200,7 @@ class Ui_MainWindow(object):
         self.password.setPlaceholderText(_translate("MainWindow", "Password"))
         self.login.setText(_translate("MainWindow", "Login"))
         self.forgot.setText(_translate("MainWindow", "Forgot password?"))
-import resources_rc
+import windows.resources_rc
 
 
 if __name__ == "__main__":
