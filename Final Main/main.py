@@ -3,8 +3,8 @@ from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
-#from windows.dashboard2_page import Ui_MainWindow as Dashboard
-from sidebar import Ui_MainWindow as Dashboard
+from windows.dashboard2_page import Ui_MainWindow as Dashboard
+# from sidebar import Ui_MainWindow as Dashboard
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -13,8 +13,7 @@ class MainWindow(QMainWindow):
         self.sql = self.db_conn.cursor()
         self.sql.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, user_type INTEGER NOT NULL)")
         self.db_conn.commit()
-
-        self.session_type = 0
+        self.session_type = 1
         self.user_sessions = {
             0 : 'User not logged',
             1 : 'User is logged'
@@ -45,7 +44,9 @@ class MainWindow(QMainWindow):
             self.ui = Login()
         elif(self.session_type == 1):
             self.ui = Dashboard()
+        
         self.ui.setupUi(self)
+        self.ui.sidebar_menu2.setHidden(True)
     
     def on_login_pressed(self):
         username = self.ui.user.text()
@@ -56,30 +57,33 @@ class MainWindow(QMainWindow):
             self.session()
         else:
             self.show_message("ERROR", "Incorrect login credentials!", QMessageBox.Warning)
+        
+    def on_sidebar_menu2_pressed(self):
+        print("FUCK")
 
 
-    def on_stackedWidget_currentChanged(self, index):
-        btn_list = self.ui.sidebar_menu.findChildren(QPushButton) \
-                    + self.ui.sidebar_menu2.findChildren(QPushButton)
+    # def on_stackedWidget_currentChanged(self, index):
+    #     btn_list = self.ui.sidebar_menu.findChildren(QPushButton) \
+    #                 + self.ui.sidebar_menu2.findChildren(QPushButton)
 
-        for btn in btn_list:
-            if index in [1,2,3,4]:
-                btn.setAutoExclusive(False)
-                btn.setChecked(False)
-            else:
-                btn.setAutoExclusive(True)    
+    #     for btn in btn_list:
+    #         if index in [1,2,3,4]:
+    #             btn.setAutoExclusive(False)
+    #             btn.setChecked(False)
+    #         else:
+    #             btn.setAutoExclusive(True)    
 
-    def on_dashboard_button_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(1)
+    # def on_dashboard_button_toggled(self):
+    #     self.ui.stackedWidget.setCurrentIndex(1)
 
-    def on_print_button_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(2) 
+    # def on_print_button_toggled(self):
+    #     self.ui.stackedWidget.setCurrentIndex(2) 
 
-    def on_help_button_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(3) 
+    # def on_help_button_toggled(self):
+    #     self.ui.stackedWidget.setCurrentIndex(3) 
 
-    def on_aboutus_button_toggled(self):
-        self.ui.stackedWidget.setCurrentIndex(4)  
+    # def on_aboutus_button_toggled(self):
+    #     self.ui.stackedWidget.setCurrentIndex(4)  
     
 
 
