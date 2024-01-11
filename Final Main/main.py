@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         if(self.session_type == 1):
             self.ui.sidebar_menu2.setHidden(True)
+            self.ui.pushButton.setText("Print Bill")
 
     def show_message(self, title, text, icon_type):
         msg = QMessageBox()
@@ -78,12 +79,30 @@ class MainWindow(QMainWindow):
         if(response == QMessageBox.Yes):
             self.session_type = 0
             self.session()
+        
+    def bills_data(self):
+        data = self.__get_users_data(self.session_uid)[0]
+        fullname = data[3]
+        balance = data[4]
+        past_bill = data[5]
+        average_bill = data[6]
+        kwh = data[7]
+        next_due = data[8]
+        return fullname, balance, past_bill, average_bill, kwh, next_due
     
     def on_logout_icon_pressed(self):
         self.logout()
     
     def on_logout_button_pressed(self):
         self.logout()
+    
+    def on_print_bill_pressed(self):
+        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+        filename = f'{fullname.replace(" ","_")}-Bills.txt'
+        bill = open(filename, 'w')
+        bill.write(f'Name: {fullname}\nBalance: {balance}\nPast Bill: {past_bill}\nAverage Bill: {average_bill}\nKwh: {kwh}\nNext Due: {next_due}')
+        self.show_message("INFO", f"Success! File saved as {filename}", QMessageBox.Information)
+
 
     def on_stackedWidget_currentChanged(self, index):
         btn_list = self.ui.sidebar_menu.findChildren(QPushButton) \
@@ -100,15 +119,9 @@ class MainWindow(QMainWindow):
         self.ui.header_widget.setCurrentIndex(0)
 
     def on_print_button_toggled(self):
-        self.ui.header_widget.setCurrentIndex(1)
-        data = self.__get_users_data(self.session_uid)[0]
-        fullname = data[3]
-        balance = data[4]
-        past_bill = data[5]
-        average_bill = data[6]
-        kwh = data[7]
-        next_due = data[8]
+        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
 
+        self.ui.header_widget.setCurrentIndex(1)
         self.ui.print_name.setText(fullname)
         self.ui.print_balance.setText(balance)
         self.ui.print_past_bill.setText(past_bill)
