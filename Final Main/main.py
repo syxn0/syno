@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         self.sql = self.db_conn.cursor()
         self.sql.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, user_type INTEGER NOT NULL)")
         self.db_conn.commit()
-        self.session_type = 1
+        self.session_type = 0
         self.user_sessions = {
             0 : 'User not logged',
             1 : 'User is logged'
