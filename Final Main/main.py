@@ -87,11 +87,22 @@ class MainWindow(QMainWindow):
     def on_dashboard_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(0)
 
-    # def on_print_button_toggled(self):
-    #     self.ui.stackedWidget.setCurrentIndex(2) 
+    def on_print_button_toggled(self):
+        self.ui.header_widget.setCurrentIndex(1)
+        data = self.__get_users_data(self.session_uid)[0]
+        fullname = data[3]
+        balance = data[4]
+        past_bill = data[5]
+        average_bill = data[6]
+        kwh = data[7]
+        next_due = data[8]
 
-    # def on_help_button_toggled(self):
-    #     self.ui.stackedWidget.setCurrentIndex(3) 
+        self.ui.label_4.setText(fullname)
+        self.ui.label_13.setText(balance)
+        self.ui.label_12.setText(past_bill)
+
+    def on_help_button_toggled(self):
+        self.ui.header_widget.setCurrentIndex(2) 
 
     def on_aboutus_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(3)  
