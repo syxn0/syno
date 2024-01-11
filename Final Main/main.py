@@ -4,16 +4,16 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
-# from sidebar import Ui_MainWindow as Dashboard
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.db_conn = sqlite3.connect("data.db")
         self.sql = self.db_conn.cursor()
-        self.sql.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, fullname TEXT NOT NULL, balance TEXT NOT NULL, past_bill TEXT NOT NULL, average_bill TEXT NOT NULL, average_bill TEXT NOT NULL, kwh TEXT NOT NULL, next_due TEXT NOT NULL, user_type INTEGER NOT NULL)")
+        self.sql.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, fullname TEXT NOT NULL, balance TEXT NOT NULL, past_bill TEXT NOT NULL, average_bill TEXT NOT NULL, kwh TEXT NOT NULL, next_due TEXT NOT NULL, user_type INTEGER NOT NULL)")
         self.db_conn.commit()
-        self.session_type = 1
+        self.session_type = 0
         self.session_uid = 0
         self.user_sessions = {
             0 : 'User not logged',
@@ -37,7 +37,7 @@ class MainWindow(QMainWindow):
         self.show_message("ERROR", "Incorrect login credentials!", QMessageBox.Warning)
     
     def __get_users_data(self, uid):
-        self.sql.execute("SELECT * FROM users WHERE id = ?;",(uid))
+        self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid)))
         results = self.sql.fetchall()
         return results
 
@@ -89,8 +89,17 @@ class MainWindow(QMainWindow):
 
     def on_print_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(1)
-        # fullname = self.__get_users_data(self.session_uid[0][1])
-        self.ui.label_4.setText("uwu")
+        data = self.__get_users_data(self.session_uid)[0]
+        fullname = data[3]
+        balance = data[4]
+        past_bill = data[5]
+        average_bill = data[6]
+        kwh = data[7]
+        next_due = data[8]
+
+        self.ui.label_4.setText(fullname)
+        self.ui.label_13.setText(balance)
+        self.ui.label_12.setText(past_bill)
 
     def on_help_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(2) 
@@ -98,9 +107,6 @@ class MainWindow(QMainWindow):
     def on_aboutus_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(3)  
         self.ui.label_7.setText("We love the earth! it is our planet!")
-    
-
-
 
 
 if(__name__ == "__main__"):
