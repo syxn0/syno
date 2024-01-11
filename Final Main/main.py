@@ -72,6 +72,18 @@ class MainWindow(QMainWindow):
             return
 
         self.__userExists(username, password)
+    
+    def logout(self):
+        response = QMessageBox.question(self, 'Logout', 'Confirm logout?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if(response == QMessageBox.Yes):
+            self.session_type = 0
+            self.session()
+    
+    def on_logout_icon_pressed(self):
+        self.logout()
+    
+    def on_logout_button_pressed(self):
+        self.logout()
 
     def on_stackedWidget_currentChanged(self, index):
         btn_list = self.ui.sidebar_menu.findChildren(QPushButton) \
@@ -97,9 +109,12 @@ class MainWindow(QMainWindow):
         kwh = data[7]
         next_due = data[8]
 
-        self.ui.label_4.setText(fullname)
-        self.ui.label_13.setText(balance)
-        self.ui.label_12.setText(past_bill)
+        self.ui.print_name.setText(fullname)
+        self.ui.print_balance.setText(balance)
+        self.ui.print_past_bill.setText(past_bill)
+        self.ui.print_avgbill.setText(average_bill)
+        self.ui.print_kwh.setText(kwh)
+        self.ui.print_next_due.setText(next_due)
 
     def on_help_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(2) 
