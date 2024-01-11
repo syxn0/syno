@@ -72,7 +72,7 @@ class MainWindow(QMainWindow):
             return
 
         self.__userExists(username, password)
-    
+
     def logout(self):
         response = QMessageBox.question(self, 'Logout', 'Confirm logout?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if(response == QMessageBox.Yes):
