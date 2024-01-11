@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\User\syno\Final Main\windows\login2.ui'
+# Form implementation generated from reading ui file 'lugin_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -184,17 +184,6 @@ class Ui_MainWindow(object):
         self.forgot.setStyleSheet("background:none;")
         self.forgot.setObjectName("forgot")
         self.verticalLayout_7.addWidget(self.frame_3, 0, QtCore.Qt.AlignVCenter)
-        self.create = QtWidgets.QPushButton(self.frame_2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setItalic(False)
-        font.setUnderline(True)
-        font.setWeight(75)
-        self.create.setFont(font)
-        self.create.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.create.setObjectName("create")
-        self.verticalLayout_7.addWidget(self.create)
         self.verticalLayout_8.addWidget(self.frame_2, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.horizontalLayout.addWidget(self.frame2)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -211,8 +200,7 @@ class Ui_MainWindow(object):
         self.password.setPlaceholderText(_translate("MainWindow", "Password"))
         self.login.setText(_translate("MainWindow", "Login"))
         self.forgot.setText(_translate("MainWindow", "Forgot password?"))
-        self.create.setText(_translate("MainWindow", "Create account"))
-import windows.resources_rc
+import resources_rc
 
 
 if __name__ == "__main__":

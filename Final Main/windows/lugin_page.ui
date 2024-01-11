@@ -352,25 +352,6 @@
             </widget>
            </widget>
           </item>
-          <item>
-           <widget class="QPushButton" name="create">
-            <property name="font">
-             <font>
-              <pointsize>10</pointsize>
-              <weight>75</weight>
-              <italic>false</italic>
-              <bold>true</bold>
-              <underline>true</underline>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="text">
-             <string>Create account</string>
-            </property>
-           </widget>
-          </item>
          </layout>
         </widget>
        </item>

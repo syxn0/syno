@@ -82,7 +82,6 @@ class MainWindow(QMainWindow):
 
     # def on_print_button_toggled(self):
     #     self.ui.stackedWidget.setCurrentIndex(2) 
-
     # def on_help_button_toggled(self):
     #     self.ui.stackedWidget.setCurrentIndex(3) 
 
