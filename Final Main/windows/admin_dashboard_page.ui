@@ -26,11 +26,11 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:none;</string>
+   <string notr="true">background: rgb(225, 225, 225);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background:rgb(203,143,75,0.77);</string>
+    <string notr="true">background: rgb(225, 225, 225);</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -48,7 +48,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">background:rgb(99, 99, 99);
+       <string notr="true">background: rgb(208, 162, 110);
 border-top-right-radius:20px;
 border-top-left-radius:20px;</string>
       </property>
@@ -94,7 +94,8 @@ border-top-left-radius:20px;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color:white;</string>
+          <string notr="true">background: rgb(208, 162, 110);
+</string>
          </property>
          <property name="text">
           <string/>
@@ -123,7 +124,8 @@ border-top-left-radius:20px;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">color:white;</string>
+          <string notr="true">color:white;
+background: rgb(208, 162, 110);</string>
          </property>
          <property name="text">
           <string>Admin Dashboard</string>
@@ -180,7 +182,7 @@ border-top-left-radius:20px;</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background:rgb(99, 99, 99);</string>
+          <string notr="true">background: rgb(208, 162, 110);</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -198,7 +200,7 @@ border-top-left-radius:20px;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">background: rgb(208, 162, 110);</string>
             </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -215,11 +217,33 @@ border-top-left-radius:20px;</string>
                  <height>16777215</height>
                 </size>
                </property>
+               <property name="autoFillBackground">
+                <bool>false</bool>
+               </property>
                <property name="styleSheet">
-                <string notr="true">background:rgb(255,255,255);</string>
+                <string notr="true">background:rgb(225, 225, 225);
+border-radius: 30px;</string>
+               </property>
+               <property name="lineWidth">
+                <number>1</number>
+               </property>
+               <property name="midLineWidth">
+                <number>0</number>
                </property>
                <property name="autoScrollMargin">
                 <number>17</number>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="alternatingRowColors">
+                <bool>true</bool>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
                </property>
                <property name="gridStyle">
                 <enum>Qt::SolidLine</enum>
@@ -324,7 +348,7 @@ border-top-left-radius:20px;</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background:rgb(205, 148, 84);
+                   <string notr="true">background:rgb(225, 225, 225);
 border-radius: 30px;</string>
                   </property>
                   <property name="frameShape">
@@ -359,7 +383,7 @@ border-radius: 30px;</string>
                     </widget>
                    </item>
                    <item row="0" column="1">
-                    <widget class="QLineEdit" name="lineEdit">
+                    <widget class="QLineEdit" name="fullname">
                      <property name="font">
                       <font>
                        <pointsize>15</pointsize>
@@ -369,8 +393,14 @@ border-radius: 30px;</string>
                       <string notr="true">border:1px solid black;
 border-radius: 10px;</string>
                      </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>32</number>
+                     </property>
                      <property name="placeholderText">
-                      <string>Fullname</string>
+                      <string>Christine Dagcuta</string>
                      </property>
                     </widget>
                    </item>
@@ -399,7 +429,7 @@ border-radius: 10px;</string>
                     </widget>
                    </item>
                    <item row="1" column="1">
-                    <widget class="QLineEdit" name="lineEdit_2">
+                    <widget class="QLineEdit" name="user_name_input">
                      <property name="font">
                       <font>
                        <pointsize>15</pointsize>
@@ -409,13 +439,16 @@ border-radius: 10px;</string>
                       <string notr="true">border:1px solid black;
 border-radius: 10px;</string>
                      </property>
+                     <property name="maxLength">
+                      <number>32</number>
+                     </property>
                      <property name="placeholderText">
-                      <string>Username</string>
+                      <string>christine143</string>
                      </property>
                     </widget>
                    </item>
                    <item row="2" column="1">
-                    <widget class="QLineEdit" name="lineEdit_3">
+                    <widget class="QLineEdit" name="new_password">
                      <property name="font">
                       <font>
                        <pointsize>15</pointsize>
@@ -424,12 +457,18 @@ border-radius: 10px;</string>
                      <property name="styleSheet">
                       <string notr="true">border:1px solid black;
 border-radius: 10px;</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="maxLength">
+                      <number>32</number>
                      </property>
                      <property name="echoMode">
                       <enum>QLineEdit::Password</enum>
                      </property>
                      <property name="placeholderText">
-                      <string>Password</string>
+                      <string>New Password</string>
                      </property>
                     </widget>
                    </item>
@@ -470,9 +509,23 @@ border-radius: 10px;</string>
                        <pointsize>15</pointsize>
                       </font>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
-                      <string notr="true">border:1px solid black;
-border-radius: 10px;</string>
+                      <string notr="true">#add_btn{
+	border:1px solid black;
+	border-radius: 10px;
+	background:rgb(208, 162, 110);
+}
+#add_btn:hover{
+	background:rgb(208, 162, 110,0.7);
+}
+#add_btn:pressed{
+	background:rgb(208, 162, 110,0.1);
+	
+}
+</string>
                      </property>
                      <property name="text">
                       <string>Add</string>

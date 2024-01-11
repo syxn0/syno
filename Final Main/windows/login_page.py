@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(720, 550)
+        MainWindow.resize(720, 602)
         MainWindow.setMinimumSize(QtCore.QSize(720, 550))
         MainWindow.setMaximumSize(QtCore.QSize(1080, 720))
         MainWindow.setBaseSize(QtCore.QSize(720, 550))
@@ -200,7 +200,7 @@ class Ui_MainWindow(object):
         self.password.setPlaceholderText(_translate("MainWindow", "Password"))
         self.login.setText(_translate("MainWindow", "Login"))
         self.forgot.setText(_translate("MainWindow", "Forgot password?"))
-import windows.resources_rc
+import resources_rc
 
 
 if __name__ == "__main__":
