@@ -438,8 +438,8 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.frame_6)
         self.pushButton.setMinimumSize(QtCore.QSize(100, 35))
         self.pushButton.setMaximumSize(QtCore.QSize(0, 0))
-        self.pushButton.setStyleSheet("border-radius:10px;")
-        self.pushButton.setObjectName("pushButton")
+        self.pushButton.setStyleSheet("border-radius:10px;font-weight:bold;")
+        self.pushButton.setObjectName("print_bill")
         self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.pushButton)
         self.verticalLayout_6.addWidget(self.frame_6)
         self.horizontalLayout_6.addWidget(self.frame_4)
@@ -467,7 +467,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.header_widget.setCurrentIndex(1)
+        self.header_widget.setCurrentIndex(0)
         self.pushButton_11.toggled['bool'].connect(self.sidebar_menu.setHidden) # type: ignore
         self.pushButton_11.toggled['bool'].connect(self.sidebar_menu2.setVisible) # type: ignore
         self.dashboard_icon.toggled['bool'].connect(self.dashboard_button.setChecked) # type: ignore
@@ -505,7 +505,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "PushButton"))
         self.label_6.setText(_translate("MainWindow", "Help"))
         self.label_7.setText(_translate("MainWindow", "About Us"))
-import resources_rc
+import windows.resources_rc
 
 
 if __name__ == "__main__":
