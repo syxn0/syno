@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
+from windows.admin_dashboard_page import Ui_MainWindow as AdminDashboard
 
 
 class MainWindow(QMainWindow):
@@ -15,10 +16,7 @@ class MainWindow(QMainWindow):
         self.db_conn.commit()
         self.session_type = 0
         self.session_uid = 0
-        self.user_sessions = {
-            0 : 'User not logged',
-            1 : 'User is logged'
-        }
+        self.session_user_type = 0
         self.session()
     
     def sidebar(self,Sidebar):
@@ -31,6 +29,7 @@ class MainWindow(QMainWindow):
         if(len(results) > 0):
             self.session_type = 1
             self.session_uid = results[0][0]
+            self.session_user_type = results[0][-1]
             self.session()
             return
 
@@ -44,7 +43,7 @@ class MainWindow(QMainWindow):
     
     def __handle_setup(self):
         self.ui.setupUi(self)
-        if(self.session_type == 1):
+        if(self.session_type == 1 and self.session_user_type == 1):
             self.ui.sidebar_menu2.setHidden(True)
             self.ui.pushButton.setText("Print Bill")
 
@@ -57,11 +56,10 @@ class MainWindow(QMainWindow):
         msg.exec_()
 
     def session(self):
-        print(self.session_uid)
         if(self.session_type == 0):
             self.ui = Login()
         elif(self.session_type == 1):
-            self.ui = Dashboard()
+            self.ui = AdminDashboard() if(self.session_user_type == 0) else Dashboard()
  
         self.__handle_setup()
     
@@ -96,7 +94,7 @@ class MainWindow(QMainWindow):
     def on_logout_button_pressed(self):
         self.logout()
     
-    def on_print_bill_pressed(self):
+    def on_print_button_pressed(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
         filename = f'{fullname.replace(" ","_")}-Bills.txt'
         bill = open(filename, 'w')
