@@ -13,7 +13,7 @@ class MainWindow(QMainWindow):
         self.sql = self.db_conn.cursor()
         self.sql.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, user_type INTEGER NOT NULL)")
         self.db_conn.commit()
-        self.session_type = 1
+        self.session_type = 0
         self.user_sessions = {
             0 : 'User not logged',
             1 : 'User is logged'
@@ -30,6 +30,11 @@ class MainWindow(QMainWindow):
         if(len(results) > 0):
             return True
         return False
+    
+    def __handle_setup(self):
+        self.ui.setupUi(self)
+        if(self.session_type == 1):
+            self.ui.sidebar_menu2.setHidden(True)
 
     def show_message(self, title, text, icon_type):
         msg = QMessageBox()
@@ -44,9 +49,8 @@ class MainWindow(QMainWindow):
             self.ui = Login()
         elif(self.session_type == 1):
             self.ui = Dashboard()
-        
-        self.ui.setupUi(self)
-        self.ui.sidebar_menu2.setHidden(True)
+ 
+        self.__handle_setup()        
     
     def on_login_pressed(self):
         username = self.ui.user.text()
