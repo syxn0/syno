@@ -41,12 +41,12 @@ class MainWindow(QMainWindow):
         if(str(uid) == "*"):
             self.sql.execute("SELECT * FROM users ORDER BY id ASC;")
         else:
-            self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid)))
+            self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid),))
         results = self.sql.fetchall()
         return results
     
     def __del_user_data(self, uid):
-        self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid)))
+        self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid),))
         self.db_conn.commit()
     
     def __add_user_data(self, fullname: str, username: str, password: str):
@@ -105,7 +105,7 @@ class MainWindow(QMainWindow):
     def __admin_init(self):
         # Initialize the users table data on login.
         self.admin_refresh_table()
-    
+
     def admin_refresh_table(self):
         self.ui.tableWidget.clearContents()
         self.ui.tableWidget.setRowCount(0)
