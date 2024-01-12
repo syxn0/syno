@@ -31,9 +31,15 @@ class MainWindow(QMainWindow):
 
         self.show_message("ERROR", "Incorrect login credentials!", QMessageBox.Warning)
     
+    def __usernameExist(self, username):
+        self.sql.execute("SELECT * FROM users WHERE username = ?;",(str(username),))
+        if(len(self.sql.fetchall()) > 0):
+            return True
+        return False
+    
     def __get_users_data(self, uid):
         if(str(uid) == "*"):
-            self.sql.execute("SELECT * FROM users;")
+            self.sql.execute("SELECT * FROM users ORDER BY id ASC;")
         else:
             self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid)))
         results = self.sql.fetchall()
@@ -41,6 +47,10 @@ class MainWindow(QMainWindow):
     
     def __del_user_data(self, uid):
         self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid)))
+        self.db_conn.commit()
+    
+    def __add_user_data(self, fullname: str, username: str, password: str):
+        self.sql.execute("INSERT INTO users(username, password, fullname, balance, past_bill, average_bill, kwh, next_due, user_type) VALUES(?,?,?,?,?,?,?,?,?)", (username, password, fullname, "0", "0","0","0","Next month", 1))
         self.db_conn.commit()
     
     def __handle_setup(self):
@@ -94,6 +104,9 @@ class MainWindow(QMainWindow):
     """
     def __admin_init(self):
         # Initialize the users table data on login.
+        self.admin_refresh_table()
+    
+    def admin_refresh_table(self):
         self.ui.tableWidget.clearContents()
         self.ui.tableWidget.setRowCount(0)
         data = self.__get_users_data("*")
@@ -129,12 +142,14 @@ class MainWindow(QMainWindow):
         }
         """)
         return button
-    
+
     def tbl_row_delete(self, row_id):
-        username = self.__get_users_data(row_id)[0][2]
+        username = self.__get_users_data(row_id)[0][1]
         confirm_delete = QMessageBox.question(self, 'Delete row', f'Delete user {username}?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if(confirm_delete == QMessageBox.Yes):
-            print(f"[{row_id}] DELETD!!")
+            self.__del_user_data(row_id)
+            self.admin_refresh_table()
+            # print(f"[{row_id}] DELETD!!")
 
     def on_add_btn_pressed(self):
         def parse(data):return data.text().strip()
@@ -144,8 +159,16 @@ class MainWindow(QMainWindow):
         if(parse(fullname) == '' or parse(username) == '' or parse(password) == ''):
             self.show_message("ERROR", f"All fields must be filled!", QMessageBox.Warning)
             return
-
+        elif(len(parse(username)) != len(parse(username).replace(' ',''))):
+            self.show_message("ERROR", f"Username must not have spaces!", QMessageBox.Warning)
+            return
+        elif(self.__usernameExist(parse(username))):
+            self.show_message("ERROR", f"Username {parse(username)} already exists!\nPlease choose another username", QMessageBox.Warning)
+            return
+        
+        self.__add_user_data(parse(fullname), parse(username), parse(password))
         self.show_message("INFO", f"Success! Added new user {parse(username)}", QMessageBox.Information)
+        self.admin_refresh_table()
         fullname.setText("")
         username.setText("")
         password.setText("")
