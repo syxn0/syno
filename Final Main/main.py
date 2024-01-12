@@ -1,6 +1,6 @@
 import sys, sqlite3
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton, QTableWidgetItem, QPushButton
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
@@ -18,10 +18,6 @@ class MainWindow(QMainWindow):
         self.session_uid = 0
         self.session_user_type = 0
         self.session()
-    
-    def sidebar(self,Sidebar):
-        Sidebar()
-
 
     def __userExists(self, username, password):
         self.sql.execute("SELECT * FROM users WHERE username = ? AND password = ?;",(username, password))
@@ -36,15 +32,24 @@ class MainWindow(QMainWindow):
         self.show_message("ERROR", "Incorrect login credentials!", QMessageBox.Warning)
     
     def __get_users_data(self, uid):
-        self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid)))
+        if(str(uid) == "*"):
+            self.sql.execute("SELECT * FROM users;")
+        else:
+            self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid)))
         results = self.sql.fetchall()
         return results
-
+    
+    def __del_user_data(self, uid):
+        self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid)))
+        self.db_conn.commit()
     
     def __handle_setup(self):
         self.ui.setupUi(self)
-        if(self.session_type == 1 and self.session_user_type == 1):
-            self.ui.sidebar_menu2.setHidden(True)
+        if(self.session_type == 1):
+            if(self.session_user_type == 0):
+                self.__admin_init()
+            elif(self.session_user_type == 1):
+                self.ui.sidebar_menu2.setHidden(True)
 
     def show_message(self, title, text, icon_type):
         msg = QMessageBox()
@@ -55,6 +60,12 @@ class MainWindow(QMainWindow):
         msg.exec_()
 
     def session(self):
+        """
+        # Session type: 0 = Login 
+        # Session type: 1 = Dashboard
+        # Session User type: 0 = Administrator
+        # Session User type: 1 = Normal User
+        """
         if(self.session_type == 0):
             self.ui = Login()
         elif(self.session_type == 1):
@@ -76,7 +87,73 @@ class MainWindow(QMainWindow):
         if(response == QMessageBox.Yes):
             self.session_type = 0
             self.session()
-        
+
+    """
+    Below are the:
+    -- ADMIN Dashboard Functions
+    """
+    def __admin_init(self):
+        # Initialize the users table data on login.
+        self.ui.tableWidget.clearContents()
+        self.ui.tableWidget.setRowCount(0)
+        data = self.__get_users_data("*")
+
+        for row_data in data:
+            rowPosition = self.ui.tableWidget.rowCount()
+            self.ui.tableWidget.insertRow(rowPosition)
+
+            for col, value in enumerate(row_data):
+                if(col == 9):
+                    user_id = row_data[0]
+                    button = self.button_parse('Delete', 'tbl_delete_btn', user_id)
+                    self.ui.tableWidget.setCellWidget(rowPosition, col, button)
+                else:
+                    item = QTableWidgetItem(str(value))
+                    self.ui.tableWidget.setItem(rowPosition, col, item)
+    
+    def button_parse(self, btn_name, obj_name, user_id):
+        button = QPushButton(btn_name)
+        button.setObjectName(obj_name)
+        button.clicked.connect(lambda _, uid=user_id: self.tbl_row_delete(uid))
+        button.setStyleSheet("""
+        #tbl_delete_btn{
+            margin:2px;
+            font-size:14px;
+            border: 1px dotted black;
+            border-radius:10px!important;
+            background:rgb(208, 0, 0,0.5);
+        }
+        #tbl_delete_btn:hover{
+            background:rgb(208, 0, 0,0.3);
+            border: 1px solid black;
+        }
+        """)
+        return button
+    
+    def tbl_row_delete(self, row_id):
+        username = self.__get_users_data(row_id)[0][2]
+        confirm_delete = QMessageBox.question(self, 'Delete row', f'Delete user {username}?', QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if(confirm_delete == QMessageBox.Yes):
+            print(f"[{row_id}] DELETD!!")
+
+    def on_add_btn_pressed(self):
+        def parse(data):return data.text().strip()
+        fullname = self.ui.fullname
+        username = self.ui.user_name_input
+        password = self.ui.new_password
+        if(parse(fullname) == '' or parse(username) == '' or parse(password) == ''):
+            self.show_message("ERROR", f"All fields must be filled!", QMessageBox.Warning)
+            return
+
+        self.show_message("INFO", f"Success! Added new user {parse(username)}", QMessageBox.Information)
+        fullname.setText("")
+        username.setText("")
+        password.setText("")
+    
+    """
+    Below are the:
+    -- USER Dashboard Functions
+    """    
     def bills_data(self):
         data = self.__get_users_data(self.session_uid)[0]
         fullname = data[3]
