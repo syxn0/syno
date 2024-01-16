@@ -199,6 +199,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addWidget(self.aboutus_button)
         self.horizontalLayout_7.addWidget(self.sidebar_menu2)
         self.main_menu = QtWidgets.QWidget(self.centralwidget)
+        self.main_menu.setStyleSheet("background:none;")
         self.main_menu.setObjectName("main_menu")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.main_menu)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
@@ -360,6 +361,13 @@ class Ui_MainWindow(object):
         self.label_15.setScaledContents(True)
         self.label_15.setObjectName("label_15")
         self.gridLayout_2.addWidget(self.label_15, 0, 0, 1, 1)
+        self.label_18 = QtWidgets.QLabel(self.averagebill)
+        self.label_18.setMaximumSize(QtCore.QSize(25, 25))
+        self.label_18.setText("")
+        self.label_18.setPixmap(QtGui.QPixmap(":/resources/dollar.png"))
+        self.label_18.setScaledContents(True)
+        self.label_18.setObjectName("label_18")
+        self.gridLayout_2.addWidget(self.label_18, 1, 1, 1, 1)
         self.avgbill_obj = QtWidgets.QLabel(self.averagebill)
         self.avgbill_obj.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
@@ -374,13 +382,6 @@ class Ui_MainWindow(object):
         self.label_12.setFont(font)
         self.label_12.setObjectName("label_12")
         self.gridLayout_2.addWidget(self.label_12, 0, 3, 1, 1)
-        self.label_18 = QtWidgets.QLabel(self.averagebill)
-        self.label_18.setMaximumSize(QtCore.QSize(25, 25))
-        self.label_18.setText("")
-        self.label_18.setPixmap(QtGui.QPixmap(":/resources/dollar.png"))
-        self.label_18.setScaledContents(True)
-        self.label_18.setObjectName("label_18")
-        self.gridLayout_2.addWidget(self.label_18, 1, 1, 1, 1)
         self.horizontalLayout_3.addWidget(self.averagebill)
         self.verticalLayout.addWidget(self.frame)
         self.frame_5 = QtWidgets.QFrame(self.dashboard)
@@ -571,18 +572,6 @@ class Ui_MainWindow(object):
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_2.setObjectName("frame_2")
-        self.label_7 = QtWidgets.QLabel(self.frame_2)
-        self.label_7.setGeometry(QtCore.QRect(190, 50, 431, 531))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        font.setBold(True)
-        font.setItalic(False)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.label_7.setFont(font)
-        self.label_7.setStyleSheet("color:red;")
-        self.label_7.setObjectName("label_7")
         self.verticalLayout_7.addWidget(self.frame_2)
         self.header_widget.addWidget(self.aboutus)
         self.verticalLayout_5.addWidget(self.header_widget)
@@ -590,7 +579,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.header_widget.setCurrentIndex(2)
+        self.header_widget.setCurrentIndex(0)
         self.pushButton_11.toggled['bool'].connect(self.sidebar_menu.setHidden) # type: ignore
         self.pushButton_11.toggled['bool'].connect(self.sidebar_menu2.setVisible) # type: ignore
         self.dashboard_icon.toggled['bool'].connect(self.dashboard_button.setChecked) # type: ignore
@@ -637,26 +626,6 @@ class Ui_MainWindow(object):
         self.label_11.setText(_translate("MainWindow", "Next Due :"))
         self.print_next_due.setText(_translate("MainWindow", "mm-dd-yy"))
         self.print_bill.setText(_translate("MainWindow", "Print Bill"))
-        self.label_7.setText(_translate("MainWindow", "⠀⠀⠀⠀⠁⠀⠀⠀⣠⣿⡿⣫⡽⠶⠶⠯⣏⠻⡿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⣿⣯⢷⠃⢄⢂⠰⡀⠌⣧⢻⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⣯⣟⣿⡀⢂⠌⡐⢠⢘⣼⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⣧⡿⡄⠿⣧⣄⣤⣤⠿⢃⣟⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⣷⣿⡇⡱⢂⠲⣐⢢⡑⣊⣿⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⢻⣾⡧⣁⠏⠦⡑⢆⡒⣡⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⢸⣹⣷⠠⣋⠒⣍⠒⡬⢸⣿⡧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⠀⠀⢀⣠⣤⣤⢼⣿⣿⠰⡡⢋⠤⣋⠔⣹⣿⠷⣾⣶⠦⣄⠀⠀⠀⠀⠀⠀\n"
-"⠀⠀⢀⣴⡿⢛⠩⣉⠛⡛⣿⠰⢡⢋⠦⣑⠪⠔⣿⠋⡔⢢⠍⡛⣿⣄⣀⡀⠀⠀\n"
-"⠀⠀⣾⣽⡇⢎⡱⢌⡱⢂⢿⡇⡱⢊⠴⡡⢃⢾⣏⠜⣌⠣⡜⢰⢹⡿⢓⠛⠹⠦\n"
-"⠀⠀⣿⣟⡇⡜⡡⢎⡱⡘⢼⣇⢃⠞⣠⢃⠞⣸⡟⢤⢙⢢⡑⠎⣼⡇⡜⡰⢂⠄\n"
-"⠀⢈⣷⣿⡇⡘⢥⢢⠱⡘⢼⣯⠌⡚⠔⣊⠖⣸⡟⢤⡉⢦⡘⠥⣺⡇⢜⡡⢎⠂\n"
-"⣿⣿⡿⣿⡇⡱⢊⢆⠣⢍⡜⣿⠰⣉⠞⠤⡓⣸⡟⠤⣉⠦⣑⢊⣽⡇⢪⠔⡩⢆\n"
-"⣿⡿⣽⢷⣧⢡⢃⠎⡜⢢⠜⣿⠰⡡⢎⡱⢢⢹⡏⡒⢥⠚⣄⠣⢾⡇⣑⢪⢑⠢\n"
-"⣿⣽⢯⡿⣿⢠⠋⡜⢌⠣⠜⣩⠒⡱⢌⡒⠥⢚⡡⡙⠤⠓⡌⠥⢻⡑⠌⢦⡉⠖\n"
-"⢿⣾⣻⣽⢿⣆⠭⡘⡌⢣⣉⡶⠩⡔⢣⢌⢃⠧⡰⣉⢎⡱⢌⡓⣂⢿⢘⢢⠩⠜\n"
-"⠀⠙⣯⢫⣿⣿⢰⠑⡌⢣⡌⣷⠑⡌⢣⠘⡌⠒⣷⠈⢲⠘⡆⡜⢰⠊⡌⣦⡟⣾\n"
-"⠀⠀⠉⢧⢿⡾⣿⣶⣭⣶⣌⣆⠱⣉⠎⡥⡙⠴⣁⢋⢆⠳⢨⡑⠥⣪⡽⣟⣻⠟\n"
-"⠀⠀⠀⠈⠳⢿⣓⣿⣯⢿⡽⣿⣷⣆⠚⡤⢙⢢⣑⣮⣴⣿⢶⡾⣟⡯⣿⠏⠁⠀\n"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠈⣙⠿⣟⣾⣿⣿⠿⣿⡿⢿⣛⡿⢿⢭⠟⠚⣋⠁⠀⠀⠀"))
 import resources_rc
 
 

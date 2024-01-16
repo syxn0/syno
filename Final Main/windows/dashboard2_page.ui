@@ -456,6 +456,9 @@ QPushButton:checked{
     </item>
     <item>
      <widget class="QWidget" name="main_menu" native="true">
+      <property name="styleSheet">
+       <string notr="true">background:none;</string>
+      </property>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
         <widget class="QWidget" name="header" native="true">
@@ -545,7 +548,7 @@ background-color: rgb(207, 207, 207);
 }</string>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="dashboard">
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -820,6 +823,25 @@ background-color: rgb(207, 207, 207);
                      </property>
                     </widget>
                    </item>
+                   <item row="1" column="1">
+                    <widget class="QLabel" name="label_18">
+                     <property name="maximumSize">
+                      <size>
+                       <width>25</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="../GUI qrc/resources.qrc">:/resources/dollar.png</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
                    <item row="1" column="2" colspan="2">
                     <widget class="QLabel" name="avgbill_obj">
                      <property name="maximumSize">
@@ -850,25 +872,6 @@ background-color: rgb(207, 207, 207);
                      </property>
                      <property name="text">
                       <string>Average Bill</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLabel" name="label_18">
-                     <property name="maximumSize">
-                      <size>
-                       <width>25</width>
-                       <height>25</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                     <property name="pixmap">
-                      <pixmap resource="../GUI qrc/resources.qrc">:/resources/dollar.png</pixmap>
-                     </property>
-                     <property name="scaledContents">
-                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
