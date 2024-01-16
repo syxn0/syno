@@ -209,10 +209,18 @@ class MainWindow(QMainWindow):
                 btn.setAutoExclusive(False)
                 btn.setChecked(False)
             else:
-                btn.setAutoExclusive(True)    
+                btn.setAutoExclusive(True)
+        
 
     def on_dashboard_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(0)
+
+        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+        
+        self.ui.balance_obj.setText(balance)
+        self.ui.pastbill_obj.setText(past_bill)
+        self.ui.avgbill_obj.setText(average_bill)
+
 
     def on_print_button_toggled(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
