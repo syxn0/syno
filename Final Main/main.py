@@ -6,6 +6,7 @@ from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
 from windows.admin_dashboard_page import Ui_MainWindow as AdminDashboard
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
