@@ -174,15 +174,6 @@ class Ui_MainWindow(object):
         self.login.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.login.setIconSize(QtCore.QSize(23, 19))
         self.login.setObjectName("login")
-        self.forgot = QtWidgets.QPushButton(self.frame_3)
-        self.forgot.setGeometry(QtCore.QRect(120, -10, 91, 41))
-        font = QtGui.QFont()
-        font.setPointSize(8)
-        font.setUnderline(True)
-        self.forgot.setFont(font)
-        self.forgot.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.forgot.setStyleSheet("background:none;")
-        self.forgot.setObjectName("forgot")
         self.verticalLayout_7.addWidget(self.frame_3, 0, QtCore.Qt.AlignVCenter)
         self.verticalLayout_8.addWidget(self.frame_2, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.horizontalLayout.addWidget(self.frame2)
@@ -199,7 +190,6 @@ class Ui_MainWindow(object):
         self.user.setPlaceholderText(_translate("MainWindow", "Username"))
         self.password.setPlaceholderText(_translate("MainWindow", "Password"))
         self.login.setText(_translate("MainWindow", "Login"))
-        self.forgot.setText(_translate("MainWindow", "Forgot password?"))
 import resources_rc
 
 

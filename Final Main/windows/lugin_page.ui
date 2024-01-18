@@ -325,31 +325,6 @@
               </size>
              </property>
             </widget>
-            <widget class="QPushButton" name="forgot">
-             <property name="geometry">
-              <rect>
-               <x>120</x>
-               <y>-10</y>
-               <width>91</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>8</pointsize>
-               <underline>true</underline>
-              </font>
-             </property>
-             <property name="cursor">
-              <cursorShape>PointingHandCursor</cursorShape>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">background:none;</string>
-             </property>
-             <property name="text">
-              <string>Forgot password?</string>
-             </property>
-            </widget>
            </widget>
           </item>
          </layout>
