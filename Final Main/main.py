@@ -92,7 +92,10 @@ class MainWindow(QMainWindow):
     def __get_past_bill(self, uid):
         self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY billing_id DESC", (uid,))
         results = self.sql.fetchall()
-        return results
+        if(len(results) > 0):
+            return results
+        
+        return [[0]]
 
     def __handle_setup(self):
         self.ui.setupUi(self)
