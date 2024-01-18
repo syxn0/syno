@@ -909,7 +909,7 @@ background-color: rgb(207, 207, 207);
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QFrame" name="graph">
+                 <widget class="QWidget" name="graph" native="true">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -924,12 +924,6 @@ background-color: rgb(207, 207, 207);
                   </property>
                   <property name="styleSheet">
                    <string notr="true">border:1px solid black;</string>
-                  </property>
-                  <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
-                  </property>
-                  <property name="frameShadow">
-                   <enum>QFrame::Raised</enum>
                   </property>
                  </widget>
                 </item>

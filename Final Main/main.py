@@ -5,7 +5,11 @@ from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
 from windows.admin_dashboard_page import Ui_MainWindow as AdminDashboard
-
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+import matplotlib.pyplot as plt 
+from matplotlib.figure import Figure
+from datetime import datetime
+import calendar
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -14,10 +18,26 @@ class MainWindow(QMainWindow):
         self.sql = self.db_conn.cursor()
         self.sql.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL, fullname TEXT NOT NULL, balance TEXT NOT NULL, past_bill TEXT NOT NULL, average_bill TEXT NOT NULL, kwh TEXT NOT NULL, next_due TEXT NOT NULL, user_type INTEGER NOT NULL)")
         self.db_conn.commit()
+        self.create_billing_history_table()
         self.session_type = 0
         self.session_uid = 0
         self.session_user_type = 0
         self.session()
+    
+
+ 
+    def create_billing_history_table(self):
+        self.sql.execute("""
+            CREATE TABLE IF NOT EXISTS billing_history (
+                billing_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                billing_date TEXT NOT NULL,
+                amount_billed TEXT NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES users (id)
+            )
+        """)
+        self.db_conn.commit()
+
 
     def __userExists(self, username, password):
         self.sql.execute("SELECT * FROM users WHERE username = ? AND password = ?;",(username, password))
@@ -60,6 +80,7 @@ class MainWindow(QMainWindow):
                 self.__admin_init()
             elif(self.session_user_type == 1):
                 self.ui.sidebar_menu2.setHidden(True)
+                self.generate_line_graph()
 
     def show_message(self, title, text, icon_type):
         msg = QMessageBox()
@@ -177,6 +198,30 @@ class MainWindow(QMainWindow):
     Below are the:
     -- USER Dashboard Functions
     """    
+
+    def generate_line_graph(self):
+        
+        self.sql.execute("SELECT * FROM billing_history WHERE user_id = ?;", (self.session_uid,))
+        billing_data = self.sql.fetchall()
+
+        billing_dates = [entry[2] for entry in billing_data]
+        billing_amounts = [float(entry[3]) for entry in billing_data]
+
+        billing_month_names = [calendar.month_name[int(date.split('-')[1])] for date in billing_dates]
+
+        fig = Figure(figsize=(10.1, 4.5), dpi=100)
+        ax = fig.add_subplot(111)
+        ax.plot(billing_month_names, billing_amounts, marker='o', label='Billing History')
+
+        ax.set_xlabel('Billing Months')
+        ax.set_ylabel('Billing Amount')
+        ax.set_title('Billing History Line Graph')
+        ax.legend()
+
+        canvas = FigureCanvas(fig)
+        canvas.setParent(self.ui.graph)
+        canvas.draw()
+
     def bills_data(self):
         data = self.__get_users_data(self.session_uid)[0]
         fullname = data[3]
@@ -186,6 +231,8 @@ class MainWindow(QMainWindow):
         kwh = data[7]
         next_due = data[8]
         return fullname, balance, past_bill, average_bill, kwh, next_due
+
+ 
 
     def on_logout_icon_pressed(self):
         self.logout()
@@ -218,10 +265,10 @@ class MainWindow(QMainWindow):
 
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
         
-        self.ui.balance_obj.setText(balance)
-        self.ui.pastbill_obj.setText(past_bill)
-        self.ui.avgbill_obj.setText(average_bill)
 
+        self.ui.balance_obj.setText(f"${balance}")
+        self.ui.pastbill_obj.setText(f"${past_bill}")
+        self.ui.avgbill_obj.setText(f"${average_bill}")
 
     def on_print_button_toggled(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
@@ -236,7 +283,7 @@ class MainWindow(QMainWindow):
 
     def on_aboutus_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(2)  
-        self.ui.label_7.setText("We love the earth! it is our planet!")
+        
 
 
 if(__name__ == "__main__"):
