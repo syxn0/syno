@@ -89,7 +89,7 @@ class MainWindow(QMainWindow):
         self.db_conn.commit()
     
     def __get_past_bill(self, uid):
-        self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY id ASC", (uid,))
+        self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY billing_id ASC", (uid,))
         results = self.sql.fetchall()
         return results
 
