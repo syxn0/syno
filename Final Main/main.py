@@ -79,8 +79,7 @@ class MainWindow(QMainWindow):
             if(self.session_user_type == 0):
                 self.__admin_init()
             elif(self.session_user_type == 1):
-                self.ui.sidebar_menu2.setHidden(True)
-                self.generate_line_graph()
+                self.__user_init()
 
     def show_message(self, title, text, icon_type):
         msg = QMessageBox()
@@ -198,6 +197,16 @@ class MainWindow(QMainWindow):
     Below are the:
     -- USER Dashboard Functions
     """    
+    def __user_init(self):
+        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+
+        self.ui.sidebar_menu2.setHidden(True)
+
+        self.ui.balance_obj.setText(f"${balance}")
+        self.ui.pastbill_obj.setText(f"${past_bill}")
+        self.ui.avgbill_obj.setText(f"${average_bill}")
+        self.generate_line_graph()
+
 
     def generate_line_graph(self):
         
@@ -262,13 +271,6 @@ class MainWindow(QMainWindow):
 
     def on_dashboard_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(0)
-
-        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
-        
-
-        self.ui.balance_obj.setText(f"${balance}")
-        self.ui.pastbill_obj.setText(f"${past_bill}")
-        self.ui.avgbill_obj.setText(f"${average_bill}")
 
     def on_print_button_toggled(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
