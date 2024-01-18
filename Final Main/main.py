@@ -95,7 +95,7 @@ class MainWindow(QMainWindow):
         if(len(results) > 0):
             return results
         
-        return [[0]]
+        return [['0']]
 
     def __handle_setup(self):
         self.ui.setupUi(self)
