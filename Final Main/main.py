@@ -23,6 +23,7 @@ class MainWindow(QMainWindow):
         self.session_type = 0
         self.session_uid = 0
         self.session_user_type = 0
+        self.cost_per_kwh = 5 # 5 usd per kwh, 5 * kwh = their billing cost
         self.session()
 
 
@@ -36,6 +37,15 @@ class MainWindow(QMainWindow):
                 FOREIGN KEY (user_id) REFERENCES users (id)
             )
         """)
+        self.db_conn.commit()
+
+    def __update_Bill(self, new_balance, new_bill_date, uid):
+        next_due = self.next_billing_date(new_bill_date)
+        self.sql.execute("UPDATE FROM users SET balance = ?, past_bill_date = ?, next_due = ? WHERE id = ?", (new_balance, new_bill_date, next_due, uid))
+        self.db_conn.commit()
+    
+    def __update_bill_history(self, uid, billing_date, billed_amount):
+        self.sql.execute("INSERT INTO billing_history(user_id, billing_date, amount_billed) VALUES(?,?,?)",(uid, billing_date, billed_amount))
         self.db_conn.commit()
 
 
@@ -74,12 +84,14 @@ class MainWindow(QMainWindow):
         current_date = datetime.now().strftime("%Y-%m-%d")
         initial_balance = 10000
         random_kwh = randint(800,1000)
-        next_bill = next_billing_date(current_date)
+        next_bill = self.next_billing_date(current_date)
         self.sql.execute("INSERT INTO users(username, password, fullname, balance, past_bill_date, average_bill, kwh, next_due, user_type) VALUES(?,?,?,?,?,?,?,?,?)", (username, password, fullname, initial_balance, current_date,"0",random_kwh,next_bill, 1))
         self.db_conn.commit()
     
-    def __get_past_bill(self):
-        pass
+    def __get_past_bill(self, uid):
+        self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY id ASC", (uid,))
+        results = self.sql.fetchall()
+        return results
 
     def __handle_setup(self):
         self.ui.setupUi(self)
@@ -89,10 +101,6 @@ class MainWindow(QMainWindow):
             elif(self.session_user_type == 1):
                 self.__user_init()
     
-    def __check_past_bill(self):
-        pass
-
-        
     def parseDate(self, date):
         return datetime.strptime(date, "%Y-%m-%d")
     
@@ -139,6 +147,20 @@ class MainWindow(QMainWindow):
         if(response == QMessageBox.Yes):
             self.session_type = 0
             self.session()
+    
+    def auto_bill(self):
+        data = self.__get_users_data(self.session_uid)[0]
+        uid = self.session_uid
+        kwh = data[7]
+        balance = data[4]
+        next_due = data[-2]
+        current_date = datetime.now().strftime("%Y-%m-%d")
+
+        new_bill = (self.cost_per_kwh * int(kwh))
+        new_balance = int(balance) - int(new_bill)
+        if(current_date == next_due):
+            self.__update_Bill(new_balance, current_date, uid)
+            self.__update_bill_history(uid, current_date, new_bill)
 
     """
     Below are the:
@@ -220,7 +242,9 @@ class MainWindow(QMainWindow):
     -- USER Dashboard Functions
     """
     def __user_init(self):
+        self.auto_bill()
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+        past_bill = self.__get_past_bill(self.session_uid)[0][-1]
 
         self.ui.sidebar_menu2.setHidden(True)
         self.ui.balance_obj.setText(f"${balance}")
@@ -262,8 +286,6 @@ class MainWindow(QMainWindow):
         next_due = data[8]
         return fullname, balance, past_bill, average_bill, kwh, next_due
 
- 
-
     def on_logout_icon_pressed(self):
         self.logout()
     
@@ -272,6 +294,7 @@ class MainWindow(QMainWindow):
     
     def on_print_bill_pressed(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+        past_bill = self.__get_past_bill(self.session_uid)[0][-1]
         next_due = self.parseDate(next_due).strftime("%B, %d %Y")
 
         filename = f'{fullname.replace(" ","_")}-Bills.txt'
@@ -290,13 +313,14 @@ class MainWindow(QMainWindow):
                 btn.setChecked(False)
             else:
                 btn.setAutoExclusive(True)
-        
+
 
     def on_dashboard_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(0)
 
     def on_print_button_toggled(self):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+        past_bill = self.__get_past_bill(self.session_uid)[0][-1]
         next_due = self.parseDate(next_due).strftime("%B, %d %Y")
 
         self.ui.header_widget.setCurrentIndex(1)
