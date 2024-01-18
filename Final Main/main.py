@@ -47,7 +47,9 @@ class MainWindow(QMainWindow):
     def __update_bill_history(self, uid, billing_date, billed_amount):
         self.sql.execute("INSERT INTO billing_history(user_id, billing_date, amount_billed) VALUES(?,?,?)",(uid, billing_date, billed_amount))
         self.db_conn.commit()
-
+    
+    def __cut_kwh(self, uid):
+        self.sql.execute("UPDATE users SET kwh = 0 WHERE id= ?",(uid,))
 
     def __userExists(self, username, password):
         self.sql.execute("SELECT * FROM users WHERE username = ? AND password = ?;",(username, password))
@@ -157,7 +159,10 @@ class MainWindow(QMainWindow):
 
         new_bill = (self.cost_per_kwh * int(kwh))
         new_balance = int(balance) - int(new_bill)
-        if datetime.strptime(current_date, "%Y-%m-%d") >= datetime.strptime(next_due, "%Y-%m-%d"):
+        if(new_balance < new_bill):
+            self.__cut_kwh(uid)
+
+        elif(datetime.strptime(current_date, "%Y-%m-%d") >= datetime.strptime(next_due, "%Y-%m-%d")):
             self.__update_Bill(new_balance, current_date, uid)
             self.__update_bill_history(uid, current_date, new_bill)
 
@@ -339,6 +344,4 @@ if(__name__ == "__main__"):
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
-
-
 
