@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
 
     def __update_Bill(self, new_balance, new_bill_date, uid):
         next_due = self.next_billing_date(new_bill_date)
-        self.sql.execute("UPDATE FROM users SET balance = ?, past_bill_date = ?, next_due = ? WHERE id = ?", (new_balance, new_bill_date, next_due, uid))
+        self.sql.execute("UPDATE users SET balance = ?, past_bill_date = ?, next_due = ? WHERE id = ?", (new_balance, new_bill_date, next_due, uid))
         self.db_conn.commit()
     
     def __update_bill_history(self, uid, billing_date, billed_amount):
@@ -52,7 +52,6 @@ class MainWindow(QMainWindow):
     def __userExists(self, username, password):
         self.sql.execute("SELECT * FROM users WHERE username = ? AND password = ?;",(username, password))
         results = self.sql.fetchall()
-        print(results)
         if(len(results) > 0):
             self.session_type = 1
             self.session_uid = results[0][0]
@@ -89,7 +88,7 @@ class MainWindow(QMainWindow):
         self.db_conn.commit()
     
     def __get_past_bill(self, uid):
-        self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY billing_id ASC", (uid,))
+        self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY billing_id DESC", (uid,))
         results = self.sql.fetchall()
         return results
 
@@ -158,7 +157,7 @@ class MainWindow(QMainWindow):
 
         new_bill = (self.cost_per_kwh * int(kwh))
         new_balance = int(balance) - int(new_bill)
-        if(current_date == next_due):
+        if datetime.strptime(current_date, "%Y-%m-%d") >= datetime.strptime(next_due, "%Y-%m-%d"):
             self.__update_Bill(new_balance, current_date, uid)
             self.__update_bill_history(uid, current_date, new_bill)
 
