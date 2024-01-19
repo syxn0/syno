@@ -1,12 +1,10 @@
 import sys, sqlite3, calendar
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QPushButton, QTableWidgetItem, QPushButton
-from PyQt5.QtCore import pyqtSlot, QFile, QTextStream
 from windows.login_page import Ui_MainWindow as Login
 from windows.dashboard2_page import Ui_MainWindow as Dashboard
 from windows.admin_dashboard_page import Ui_MainWindow as AdminDashboard
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-import matplotlib.pyplot as plt 
 from matplotlib.figure import Figure
 from datetime import datetime, timedelta
 from random import randint
@@ -81,13 +79,26 @@ class MainWindow(QMainWindow):
         self.sql.execute("DELETE FROM users WHERE id = ?;",(str(uid),))
         self.db_conn.commit()
 
+
     def __add_user_data(self, fullname: str, username: str, password: str):
         current_date = datetime.now().strftime("%Y-%m-%d")
         initial_balance = 10000
-        random_kwh = randint(800,1000)
+        random_kwh = randint(800, 1000)
         next_bill = self.next_billing_date(current_date)
-        self.sql.execute("INSERT INTO users(username, password, fullname, balance, past_bill_date, average_bill, kwh, next_due, user_type) VALUES(?,?,?,?,?,?,?,?,?)", (username, password, fullname, initial_balance, current_date,"0",random_kwh,next_bill, 1))
+
+        self.sql.execute(
+            "INSERT INTO users(username, password, fullname, balance, past_bill_date, average_bill, kwh, next_due, user_type) VALUES(?,?,?,?,?,?,?,?,?)",
+            (username, password, fullname, initial_balance, current_date, "0", random_kwh, next_bill, 1)
+        )
         self.db_conn.commit()
+
+        self.sql.execute("SELECT id FROM users WHERE username = ?", (username,))
+        user_id = self.sql.fetchone()[0]
+
+        self.__update_bill_history(user_id, current_date, self.cost_per_kwh * int(random_kwh))
+
+        if self.session_type == 1 and self.session_user_type == 0:
+            self.admin_refresh_table()
     
     def __get_past_bill(self, uid):
         self.sql.execute("SELECT * FROM billing_history WHERE user_id = ? ORDER BY billing_id DESC", (uid,))
@@ -96,6 +107,7 @@ class MainWindow(QMainWindow):
             return results
         
         return [['0']]
+    
 
     def __handle_setup(self):
         self.ui.setupUi(self)
@@ -176,6 +188,7 @@ class MainWindow(QMainWindow):
     def __admin_init(self):
         # Initialize the users table data on login.
         self.admin_refresh_table()
+        
 
     def admin_refresh_table(self):
         self.ui.tableWidget.clearContents()
@@ -212,6 +225,7 @@ class MainWindow(QMainWindow):
             border: 1px solid black;
         }
         """)
+        
         return button
 
     def tbl_row_delete(self, row_id):
@@ -253,10 +267,16 @@ class MainWindow(QMainWindow):
         fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
         past_bill = self.__get_past_bill(self.session_uid)[0][-1]
 
+        billing_history = self.__get_past_bill(self.session_uid)
+        total_billed = sum(float(entry[3]) for entry in billing_history)
+        num_entries = len(billing_history)
+        
+        average_billing = total_billed / num_entries if num_entries > 0 else 0
+
         self.ui.sidebar_menu2.setHidden(True)
         self.ui.balance_obj.setText(f"${balance}")
         self.ui.pastbill_obj.setText(f"${past_bill}")
-        self.ui.avgbill_obj.setText(f"${average_bill}")
+        self.ui.avgbill_obj.setText(f"${average_billing:.2f}")  # Update average billing
         self.generate_line_graph()
 
 
@@ -300,13 +320,20 @@ class MainWindow(QMainWindow):
         self.logout()
     
     def on_print_bill_pressed(self):
-        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+
+        fullname, balance, past_bill, _, kwh, next_due = self.bills_data()
         past_bill = self.__get_past_bill(self.session_uid)[0][-1]
+        billing_history = self.__get_past_bill(self.session_uid)
+        total_billed = sum(float(entry[3]) for entry in billing_history)
+        num_entries = len(billing_history)
+        
+        average_billing = total_billed / num_entries if num_entries > 0 else 0
+
         next_due = self.parseDate(next_due).strftime("%B, %d %Y")
 
         filename = f'{fullname.replace(" ","_")}-Bills.txt'
         bill = open(filename, 'w')
-        bill.write(f'Name: {fullname}\nBalance: {balance}\nPast Bill: {past_bill}\nAverage Bill: {average_bill}\nKwh: {kwh}\nNext Due: {next_due}')
+        bill.write(f'Name: {fullname}\nBalance: {balance}\nPast Bill: {past_bill}\nAverage Bill: ${average_billing:.2f}\nKwh: {kwh}\nNext Due: {next_due}')
         self.show_message("INFO", f"Success! File saved as {filename}", QMessageBox.Information)
 
 
@@ -326,17 +353,24 @@ class MainWindow(QMainWindow):
         self.ui.header_widget.setCurrentIndex(0)
 
     def on_print_button_toggled(self):
-        fullname, balance, past_bill, average_bill, kwh, next_due = self.bills_data()
+        fullname, balance, past_bill, _, kwh, next_due = self.bills_data()
         past_bill = self.__get_past_bill(self.session_uid)[0][-1]
-        next_due = self.parseDate(next_due).strftime("%B, %d %Y")
+
+
+        billing_history = self.__get_past_bill(self.session_uid)
+        total_billed = sum(float(entry[3]) for entry in billing_history)
+        num_entries = len(billing_history)
+
+
+        average_billing = total_billed / num_entries if num_entries > 0 else 0
 
         self.ui.header_widget.setCurrentIndex(1)
         self.ui.print_name.setText(fullname)
         self.ui.print_balance.setText(balance)
         self.ui.print_past_bill.setText(past_bill)
-        self.ui.print_avgbill.setText(average_bill)
+        self.ui.print_avgbill.setText(f"${average_billing:.2f}")
         self.ui.print_kwh.setText(kwh)
-        self.ui.print_next_due.setText(next_due)
+        self.ui.print_next_due.setText(self.parseDate(next_due).strftime("%B, %d %Y"))
 
     def on_aboutus_button_toggled(self):
         self.ui.header_widget.setCurrentIndex(2)
